@@ -6,15 +6,21 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    [Header ("Leave This Alone")]
+    [Header ("Leave These Alone")]
     [SerializeField]
     private float worldTimer;       // how much time has passed sicne the start of the game
+    [SerializeField]
+    private float torchTimer;       // how much time is left before the torch goes out
     int minutesInGame;              // how many minutes have passed since the start of the game, used only for displaying time
-    [Header ("You Can Change These")]
-    public float torchTimer;        // how much time is left before the torch goes out
+    [SerializeField]
+    int torchesLit;                 // how many torches have been lit so far
+
+    [Header("You Can Change These")]
+    public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
     float torchSpeedMod;            // the modifier that changes how fast the torch goes out
     public float torchSpeedNormal;  // the modifier for the torch's speed when the player is not sprinting
     public float torchSpeedSprint;  // the modifier for the torch's speed when the player is sprinting
+    public float relightAmount;     // how much more time to add to the time on your torch when it is relit
 
     [Header ("Connect To Objects In Unity Scene")]
     public PlayerController player;     // connects this script to the player in the scene
@@ -26,6 +32,7 @@ public class Timer : MonoBehaviour
     {
         worldTimer = 0.0f;                  // set the world timer to 0 at the start of the game
         minutesInGame = 0;                  // set the number of minutes since the start of the game to 0
+        torchTimer = torchTimerMax;         // sets the torch timer to the max amount of time on a torch
         torchSpeedMod = torchSpeedNormal;   // make sure that the torch's burning speed is at the normal speed to start
     }
 
@@ -66,5 +73,17 @@ public class Timer : MonoBehaviour
             // TODO adjust later, either add pop-up or a scene
             Debug.Log("Game Over");
         }
+    }
+
+    public void LitTorch()
+    {
+        torchesLit++;
+        torchTimer += relightAmount;
+        if(torchTimer > torchTimerMax)
+        {
+            torchTimer = torchTimerMax;
+        }
+
+        // TODO add change to sprite if needed
     }
 }
