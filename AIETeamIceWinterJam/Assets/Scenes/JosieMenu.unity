@@ -957,7 +957,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game
+          m_StringArgument: JosieTestScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &651162851
@@ -1313,6 +1313,7 @@ GameObject:
   - component: {fileID: 793943649}
   - component: {fileID: 793943648}
   - component: {fileID: 793943652}
+  - component: {fileID: 793943653}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1428,6 +1429,28 @@ MonoBehaviour:
   main: {fileID: 1839934841}
   tutorial: {fileID: 780018943}
   credits: {fileID: 927519584}
+--- !u!114 &793943653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793943647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7532d3226cea1c4ebdfa1eca1de77f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torchTimer: 0
+  torchesLit: 0
+  torchTimerMax: 0
+  torchSpeedNormal: 0
+  torchSpeedSprint: 0
+  relightAmount: 0
+  torchesToLightTotal: 0
+  playerMotor: {fileID: 0}
+  torchRemainingSlider: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &890728544
 GameObject:
   m_ObjectHideFlags: 0

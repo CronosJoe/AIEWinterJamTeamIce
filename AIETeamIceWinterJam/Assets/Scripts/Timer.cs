@@ -8,10 +8,9 @@ public class Timer : MonoBehaviour
 {
     [Header ("Leave These Alone")]
     [SerializeField]
-    private float worldTimer;       // how much time has passed sicne the start of the game
+    static float worldTimer;        // how much time has passed sicne the start of the game
     [SerializeField]
     private float torchTimer;       // how much time is left before the torch goes out
-    int minutesInGame;              // how many minutes have passed since the start of the game, used only for displaying time
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
 
@@ -33,8 +32,6 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        worldTimer = 0.0f;                  // set the world timer to 0 at the start of the game
-        minutesInGame = 0;                  // set the number of minutes since the start of the game to 0
         torchTimer = torchTimerMax;         // sets the torch timer to the max amount of time on a torch
         torchSpeedMod = torchSpeedNormal;   // make sure that the torch's burning speed is at the normal speed to start
         torchesLit = 0;
@@ -46,20 +43,12 @@ public class Timer : MonoBehaviour
         worldTimer += Time.deltaTime;   // tick the world timer up
         if(worldTimer >= 60)            // when a minute has passed, increase the counter for minutes and set seconds back to 0
         {
-            minutesInGame++;
             worldTimer = 0.0f;
         }
 
-        //if(worldTimer < 10)           // for display, this section sets the time display to minutes:seconds, and puts a 0 in front of the seconds if it is less than 10
-        //{
-        //    timeInGame.text = minutesInGame + ":0" + Mathf.Floor(worldTimer).ToString();
-        //}
-        //else
-        //{
-        //    timeInGame.text = minutesInGame + ":" + Mathf.Floor(worldTimer).ToString();
-        //}
+        // timeInGame.text = torchTimer.ToString("00.00");
 
-        if(playerMotor.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
+        if (playerMotor.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
         {
             torchSpeedMod = torchSpeedSprint;
         }
@@ -83,6 +72,7 @@ public class Timer : MonoBehaviour
         {
             // TODO adjust later, either add pop-up or a scene
             Debug.Log("You Win");
+            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
         }
     }
 

@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         Debug.Log(sceneName);
-        //SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ToTutorial()
