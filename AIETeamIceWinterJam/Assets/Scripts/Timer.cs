@@ -28,6 +28,8 @@ public class Timer : MonoBehaviour
     public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining; // timer to show the current status of the torch (time remaining with numbers)
     // public TMP_Text timeInGame;
+    public GameObject pauseMenu;
+    bool paused;
 
     void Start()
     {
@@ -36,6 +38,7 @@ public class Timer : MonoBehaviour
         torchTimer = torchTimerMax;         // sets the torch timer to the max amount of time on a torch
         torchSpeedMod = torchSpeedNormal;   // make sure that the torch's burning speed is at the normal speed to start
         torchesLit = 0;
+        paused = false;
     }
 
     void Update()
@@ -93,5 +96,21 @@ public class Timer : MonoBehaviour
         }
 
         // TODO add change to sprite if needed
+    }
+
+    public void TogglePause()
+    {
+        if (paused)
+        {
+            paused = false;
+            Time.timeScale = 1;
+            pauseMenu.SetActive(false);
+        }
+        else
+        {
+            paused = true;
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
+        }
     }
 }
