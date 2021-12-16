@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveVec = playersInputTracker.currentActionMap["Move"].ReadValue<Vector2>();
-        motor.MoveInput(new Vector3(moveVec.x, 0.0f, moveVec.y));
+        moveVec = playersInputTracker.currentActionMap["Move"].ReadValue<Vector2>(); //taking the value off of the movement
+        motor.MoveInput(new Vector3(moveVec.x, 0.0f, moveVec.y)); //sending to the motor for use
         //will probably want a movement animation call here when we get to that point
     }
 }

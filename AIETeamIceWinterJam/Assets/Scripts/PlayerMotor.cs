@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     // Input handling, these need to be public for Josie to use
-    public Vector3 isMoving; //stealing terry's bool idea cause I liked it
+    public Vector3 movementVec3; //stealing terry's bool idea cause I liked it
     public bool isSprinting;
     [Header("Outside References")]
     public CharacterController controller; //This does not handle gravity so if we implement slopes in the maze for whatever reason add a gravity function
@@ -19,7 +19,7 @@ public class PlayerMotor : MonoBehaviour
     public PlayerController playerRef;
     public void MoveInput(Vector3 move)
     {
-        isMoving = move;
+        movementVec3 = move;
     }
     public void DashInput() 
     {
@@ -27,17 +27,17 @@ public class PlayerMotor : MonoBehaviour
     }
     private void Update()
     {
-        if (isMoving.magnitude >= .1f)
+        if (movementVec3.magnitude >= .1f) //this will simply stop the below calls from happening if there has been no new input
         {
-            float targetAngle = Mathf.Atan2(isMoving.x, isMoving.z) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            float targetAngle = Mathf.Atan2(movementVec3.x, movementVec3.z) * Mathf.Rad2Deg; //changing the direction based on the current movement vector
+            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f); //setting the new direction
             if (!isSprinting)
             {
-                controller.Move(isMoving * movementSpeed * Time.deltaTime); //actually moving the player, with a cylinder collider cause charactercontroller moment
+                controller.Move(movementVec3 * movementSpeed * Time.deltaTime); //actually moving the player, with a cylinder collider cause charactercontroller moment
             }
             else 
             {
-                controller.Move(isMoving * sprintSpeed * Time.deltaTime);
+                controller.Move(movementVec3 * sprintSpeed * Time.deltaTime);
             }
         }
     }
