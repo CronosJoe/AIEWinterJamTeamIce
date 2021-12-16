@@ -10,8 +10,8 @@ public class Timer : MonoBehaviour
     float torchTimer;   // how much time is left before the torch goes out
     // TODO add player controller script to reference if the player is sprinting
 
-    // public TMP_Text torchTimeRemaining;
-    public Slider torchRemainingSlider;
+    public Slider torchRemainingSlider;     // slider to show the current status of the torch (time remaining without numbers)
+    // public TMP_Text torchTimeRemaining;  // timer to show the current status of the torch (time remaining with numbers)
 
     public float torchSpeedMod;     // the modifier that changes how fast the torch goes out
 
@@ -30,5 +30,6 @@ public class Timer : MonoBehaviour
         // TODO if player is sprinting, adjust torchSpeedMod, else put it back to 1.0f
         torchTimer -= Time.deltaTime * torchSpeedMod;
         torchRemainingSlider.value = torchTimer;
+        // torchTimeRemaining.text = torchtimer;
     }
 }
