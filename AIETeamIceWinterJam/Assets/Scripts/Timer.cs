@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
     public float torchSpeedSprint;  // the modifier for the torch's speed when the player is sprinting
 
     [Header ("Connect To Objects In Unity Scene")]
-    public PlayerController player;     // connects this script to the player in the scene
+    public PlayerMotor playerMotor;     // connects this script to the player in the scene
     public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining; // timer to show the current status of the torch (time remaining with numbers)
     // public TMP_Text timeInGame;
@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour
         //    timeInGame.text = minutesInGame + ":" + Mathf.Floor(worldTimer).ToString();
         //}
 
-        if(player.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
+        if(playerMotor.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
         {
             torchSpeedMod = torchSpeedSprint;
         }
