@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
     public float torchSpeedNormal;  // the modifier for the torch's speed when the player is not sprinting
     public float torchSpeedSprint;  // the modifier for the torch's speed when the player is sprinting
     public float relightAmount;     // how much more time to add to the time on your torch when it is relit
+    public int torchesToLightTotal; // how many torches need to be lit to win
 
     [Header ("Connect To Objects In Unity Scene")]
     public PlayerMotor playerMotor;     // connects this script to the player in the scene
@@ -34,6 +35,7 @@ public class Timer : MonoBehaviour
         minutesInGame = 0;                  // set the number of minutes since the start of the game to 0
         torchTimer = torchTimerMax;         // sets the torch timer to the max amount of time on a torch
         torchSpeedMod = torchSpeedNormal;   // make sure that the torch's burning speed is at the normal speed to start
+        torchesLit = 0;
     }
 
     void Update()
@@ -71,11 +73,17 @@ public class Timer : MonoBehaviour
         if(torchTimer <= 0)
         {
             // TODO adjust later, either add pop-up or a scene
-            Debug.Log("Game Over");
+            Debug.Log("You Lose");
+        }
+
+        if(torchesLit == torchesToLightTotal)
+        {
+            // TODO adjust later, either add pop-up or a scene
+            Debug.Log("You Win");
         }
     }
 
-    public void LitTorch()
+    public void LightTorch()
     {
         torchesLit++;
         torchTimer += relightAmount;
