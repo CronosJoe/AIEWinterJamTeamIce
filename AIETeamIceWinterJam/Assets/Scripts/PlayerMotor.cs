@@ -9,14 +9,12 @@ public class PlayerMotor : MonoBehaviour
     public bool isSprinting;
     [Header("Outside References")]
     public CharacterController controller; //This does not handle gravity so if we implement slopes in the maze for whatever reason add a gravity function
+    public PlayerController playerRef;
     [Header("Player Stats")]
     [Range(0, 50)]
     [SerializeField] float movementSpeed;
     [Range(0, 150)]
     [SerializeField] float sprintSpeed;
-    [Header("Body")]
-    public Transform dummyReference; //might not need cause I'm trying to shortcut movement with character controller
-    public PlayerController playerRef;
     public void MoveInput(Vector3 move)
     {
         movementVec3 = move;
