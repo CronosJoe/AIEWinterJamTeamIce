@@ -6,30 +6,53 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    float worldTimer;   // how much time has passed sicne the start of the game
-    float torchTimer;   // how much time is left before the torch goes out
-    // TODO add player controller script to reference if the player is sprinting
+    [Header ("Leave This Alone")]
+    [SerializeField]
+    private float worldTimer;       // how much time has passed sicne the start of the game
+    int minutesInGame;
+    [Header ("You Can Change These")]
+    public float torchTimer;        // how much time is left before the torch goes out
+    // TODO playerController player;
+    public float torchSpeedMod;     // the modifier that changes how fast the torch goes out
 
+    [Header ("Connect To Objects On Canvas")]
     public Slider torchRemainingSlider;     // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining;  // timer to show the current status of the torch (time remaining with numbers)
-
-    public float torchSpeedMod;     // the modifier that changes how fast the torch goes out
+    public TMP_Text timeInGame;
 
     void Start()
     {
         worldTimer = 0.0f;
-        torchTimer = 10.0f;
-
-        torchSpeedMod = 1.0f;
+        minutesInGame = 0;
     }
 
     void Update()
     {
         worldTimer += Time.deltaTime;
-        
-        // TODO if player is sprinting, adjust torchSpeedMod, else put it back to 1.0f
+        if(worldTimer >= 60)
+        {
+            minutesInGame++;
+            worldTimer = 0.0f;
+        }
+
+        if(worldTimer < 10)
+        {
+            timeInGame.text = minutesInGame + ":0" + Mathf.Floor(worldTimer).ToString();
+        }
+        else
+        {
+            timeInGame.text = minutesInGame + ":" + Mathf.Floor(worldTimer).ToString();
+        }
+
+        // TODO
+        // if(player.isSprinting)
+        //{
+            
+        //}
         torchTimer -= Time.deltaTime * torchSpeedMod;
         torchRemainingSlider.value = torchTimer;
-        // torchTimeRemaining.text = torchtimer;
+        // torchTimeRemaining.text = Mathf.Floor(torchTimer).ToString();
+
+        // TODO if player lights another torch, add time to the torchTimer
     }
 }
