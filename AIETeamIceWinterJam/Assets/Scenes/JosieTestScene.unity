@@ -301,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &460295481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5790335}
         m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: LitTorch
+        m_MethodName: LightTorch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
