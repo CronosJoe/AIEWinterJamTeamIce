@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
     public float relightAmount;     // how much more time to add to the time on your torch when it is relit
 
     [Header ("Connect To Objects In Unity Scene")]
-    public PlayerController player;     // connects this script to the player in the scene
+    public PlayerMotor playerMotor;     // connects this script to the player in the scene
     public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining; // timer to show the current status of the torch (time remaining with numbers)
     // public TMP_Text timeInGame;
@@ -54,7 +54,7 @@ public class Timer : MonoBehaviour
         //    timeInGame.text = minutesInGame + ":" + Mathf.Floor(worldTimer).ToString();
         //}
 
-        if(player.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
+        if(playerMotor.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
         {
             torchSpeedMod = torchSpeedSprint;
         }
