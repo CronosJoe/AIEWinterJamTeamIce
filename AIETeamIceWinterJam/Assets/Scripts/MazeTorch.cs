@@ -13,7 +13,7 @@ public class MazeTorch : MonoBehaviour
         lit = false;
     }
 
-    void LightTorch()
+    public void LightTorch()
     {
         // TODO change how the gameobject appears when lit
         // TODO* sound?
