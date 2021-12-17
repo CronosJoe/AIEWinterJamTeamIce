@@ -41,6 +41,7 @@ public class MainMenu : MonoBehaviour
             label.text = winLabel;
             main.SetActive(false);
             winScore.text = "You won the game in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
+            lastTimeText.text = PlayerPrefs.GetString("LastTime");
         }
         else
         {

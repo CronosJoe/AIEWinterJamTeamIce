@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
-    string lastTime;                 // how long it took you the last time that you played
+    public string lastTime;                 // how long it took you the last time that you played
     public bool doorOpen;
 
     [Header("You Can Change These")]
@@ -117,11 +117,13 @@ public class Timer : MonoBehaviour
         sceneLoader.GameWon();
         if (lastTime != null)
         {
-            lastTime = PlayerPrefs.GetString("WorldTime");
+            lastTime = "Last time, you won in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
+            PlayerPrefs.SetString("LastTime", lastTime);
         }
         else
         {
             lastTime = "Not bad for your first game!";
+            PlayerPrefs.SetString("LastTime", lastTime);
         }
         PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
         sceneLoader.ChangeScene("JosieMenu");
