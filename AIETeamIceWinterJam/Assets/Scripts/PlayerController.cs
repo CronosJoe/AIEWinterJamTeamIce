@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerMotor motor;
     public Animator animController;
     [SerializeField] Timer timerScript; //don't change jut reference
+    [SerializeField] CameraMovement cameraController;
     [Header("editable")]
     [SerializeField] int torchLightDistance;
     [Range(0,1)]
@@ -23,7 +24,9 @@ public class PlayerController : MonoBehaviour
         playersInputTracker.currentActionMap["Sprint"].performed += ToSprint;
         playersInputTracker.currentActionMap["Fire"].performed += LightTorch;
         playersInputTracker.currentActionMap["Pause"].performed += PauseButton;
+        playersInputTracker.currentActionMap["CameraLock"].performed += ToggleCamera;
     }
+
 
     private void OnDisable() //this will let me disable our input events when the object leaves
     {
@@ -38,6 +41,10 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("Failed to unsubscribe from the input event methods due to the input manager being removed first, this will always occur in non builds", this);
         }
     } 
+    private void ToggleCamera(InputAction.CallbackContext obj)
+    {
+        cameraController.ToggleLock();
+    }
     private void PauseButton(InputAction.CallbackContext obj)
     {
         timerScript.TogglePause(); //toggle the pause menu
@@ -83,6 +90,11 @@ public class PlayerController : MonoBehaviour
                 closestTorch = other.gameObject;
             }
             //might want to display to play that they can in fact now do the thing
+        }
+        if(other.tag == "door") 
+        {
+            //check torches here
+            //win
         }
     }
     // Update is called once per frame
