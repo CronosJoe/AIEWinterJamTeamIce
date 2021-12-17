@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -17,10 +16,14 @@ public class MainMenu : MonoBehaviour
     public string mainLabel;
     public string tutorialLabel;
     public string creditsLabel;
+    public string winLabel;
+    public string loseLabel;
     [Header("Screens")]
     public GameObject main;
     public GameObject tutorial;
     public GameObject credits;
+    public GameObject win;
+    public GameObject lose;
 
     void Start()
     {
@@ -28,17 +31,6 @@ public class MainMenu : MonoBehaviour
         main.SetActive(true);
         tutorial.SetActive(false);
         credits.SetActive(false);
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void ChangeScene(string sceneName)
-    {
-        Debug.Log(sceneName);
-        SceneManager.LoadScene(sceneName);
     }
 
     public void ToTutorial()

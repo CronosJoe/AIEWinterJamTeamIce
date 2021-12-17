@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
 
         // timeInGame.text = torchTimer.ToString("00.00");
 
-        if (playerMotor.isSprinting)          // if the player is sprinting, change the torch burning speed to the sprinting burn speed
+        if (playerMotor.isSprinting)            // if the player is sprinting, change the torch burning speed to the sprinting burn speed
         {
             torchSpeedMod = torchSpeedSprint;
         }
