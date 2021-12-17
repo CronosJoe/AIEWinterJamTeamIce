@@ -80,18 +80,6 @@ public class Timer : MonoBehaviour
             doorOpen = true;
             // TODO open door
             Debug.Log("Door Opens");
-
-            sceneLoader.GameWon();
-            if(lastTime != null)
-            {
-                lastTime = PlayerPrefs.GetString("WorldTime");
-            }
-            else
-            {
-                lastTime = "Not bad for your first game!";
-            }
-            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
-            sceneLoader.ChangeScene("JosieMenu");
         }
     }
 
@@ -121,5 +109,20 @@ public class Timer : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
+    }
+
+    public void Win()
+    {
+        sceneLoader.GameWon();
+        if (lastTime != null)
+        {
+            lastTime = PlayerPrefs.GetString("WorldTime");
+        }
+        else
+        {
+            lastTime = "Not bad for your first game!";
+        }
+        PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+        sceneLoader.ChangeScene("JosieMenu");
     }
 }
