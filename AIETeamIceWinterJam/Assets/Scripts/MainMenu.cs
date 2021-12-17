@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
     [Header("Labels")]
     public TMP_Text label;
     public string mainLabel;
+    public GameObject mainLabelImg;
     public string tutorialLabel;
     public string creditsLabel;
     public string winLabel;

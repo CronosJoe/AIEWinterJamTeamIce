@@ -2539,7 +2539,7 @@ MonoBehaviour:
   creditsButton: {fileID: 101051609}
   quitButton: {fileID: 479431622}
   label: {fileID: 2118589710}
-  mainLabel: Lost in Voxeldise
+  mainLabel: 
   tutorialLabel: Controls
   creditsLabel: Credits
   winLabel: You Win!
@@ -4725,7 +4725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Lost in Voxeldise
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
