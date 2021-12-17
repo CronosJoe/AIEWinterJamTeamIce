@@ -8,7 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JosieMenu.unity
     guid: 927adb9fb06aaa749ab442cb3326e630
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JosieTestScene.unity
     guid: 6a8002a9916423743beccd9e71ad36a8
+  - enabled: 1
+    path: Assets/Scenes/WalkerTestMap.unity
+    guid: dbf7604146203f84e9771fa0851b1e01
+  - enabled: 1
+    path: Assets/Scenes/WalkerMap2.unity
+    guid: e74cc64d64a32f84d95e5865230bc094
+  - enabled: 1
+    path: Assets/Scenes/XavierMap3.unity
+    guid: 12d7daef3fb171940999ab0fe1dbc842
   m_configObjects: {}
