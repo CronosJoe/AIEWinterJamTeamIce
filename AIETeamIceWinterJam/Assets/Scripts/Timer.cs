@@ -8,11 +8,13 @@ public class Timer : MonoBehaviour
 {
     [Header ("Leave These Alone")]
     [SerializeField]
-    public float worldTimer;        // how much time has passed sicne the start of the game
+    static public float worldTimer;        // how much time has passed sicne the start of the game
     [SerializeField]
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
+    public string lastTime;                 // how long it took you the last time that you played
+    public bool doorOpen;
 
     [Header("You Can Change These")]
     public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
@@ -24,12 +26,14 @@ public class Timer : MonoBehaviour
 
     [Header ("Connect To Objects In Unity Scene")]
     public PlayerMotor playerMotor;     // connects this script to the player in the scene
-    public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
+    // public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining; // timer to show the current status of the torch (time remaining with numbers)
     // public TMP_Text timeInGame;
     public GameObject pauseMenu;
     bool paused;
     public SceneLoader sceneLoader;
+    [SerializeField] PlayerController playerInput;
+    public Collider door;
 
     void Start()
     {
@@ -38,6 +42,7 @@ public class Timer : MonoBehaviour
         torchesLit = 0;
         paused = false;
         pauseMenu.SetActive(false);
+        doorOpen = false;
     }
 
     void Update()
@@ -59,24 +64,23 @@ public class Timer : MonoBehaviour
             torchSpeedMod = torchSpeedNormal;   // if the player is not sprinting, change the torch bruning speed back to nromal
         }
         torchTimer -= Time.deltaTime * torchSpeedMod;
-        torchRemainingSlider.value = torchTimer;    // displays the time left for the torch on a slider
+        // torchRemainingSlider.value = torchTimer;    // displays the time left for the torch on a slider
         // torchTimeRemaining.text = Mathf.Floor(torchTimer).ToString();    // displays the time left for the torch with numbers
 
         // TODO if player lights another torch, add time to the torchTimer and to a counter to check how many have been lit
 
         if(torchTimer <= 0)
         {
-            Debug.Log("You Lose");
             sceneLoader.GameLose();
-            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+            // PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
             sceneLoader.ChangeScene("JosieMenu");
         }
 
         if(torchesLit == torchesToLightTotal)
         {
-            sceneLoader.GameWon();
-            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
-            sceneLoader.ChangeScene("JosieMenu");
+            doorOpen = true;
+            door.isTrigger = true;
+            // TODO open door
         }
     }
 
@@ -88,7 +92,7 @@ public class Timer : MonoBehaviour
         {
             torchTimer = torchTimerMax;
         }
-
+        playerInput.animController.SetBool("Lighting", false);
         // TODO add change to sprite if needed
     }
 
@@ -106,5 +110,22 @@ public class Timer : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
+    }
+
+    public void Win()
+    {
+        sceneLoader.GameWon();
+        if (lastTime != null)
+        {
+            lastTime = "Last time, you won in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
+            PlayerPrefs.SetString("LastTime", lastTime);
+        }
+        else
+        {
+            lastTime = "Not bad for your first game!";
+            PlayerPrefs.SetString("LastTime", lastTime);
+        }
+        PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+        sceneLoader.ChangeScene("JosieMenu");
     }
 }

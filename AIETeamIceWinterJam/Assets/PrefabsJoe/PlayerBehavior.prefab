@@ -82,6 +82,8 @@ MonoBehaviour:
   motor: {fileID: 5885767184105925132}
   animController: {fileID: 6710000145274444527}
   timerScript: {fileID: 0}
+  torchLightDistance: 0
+  delay: 0
 --- !u!114 &5885767184105925132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +101,7 @@ MonoBehaviour:
   controller: {fileID: 8453944173700781644}
   playerRef: {fileID: 5885767184105925130}
   movementSpeed: 7
-  sprintSpeed: 0
+  sprintSpeed: 10
 --- !u!143 &8453944173700781644
 CharacterController:
   m_ObjectHideFlags: 0
@@ -201,6 +203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7074904153488717775, guid: dcbb1c32351605f4998514d5bf9105c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 52f6affac64cef94db09402cf02f86bd, type: 2}
     - target: {fileID: 919132149155446097, guid: dcbb1c32351605f4998514d5bf9105c4, type: 3}
       propertyPath: m_Name
       value: PlayerBody
