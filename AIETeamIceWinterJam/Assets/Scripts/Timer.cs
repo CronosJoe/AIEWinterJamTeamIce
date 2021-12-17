@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
 {
     [Header ("Leave These Alone")]
     [SerializeField]
-    static float worldTimer;        // how much time has passed sicne the start of the game
+    public float worldTimer;        // how much time has passed sicne the start of the game
     [SerializeField]
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
@@ -36,6 +36,7 @@ public class Timer : MonoBehaviour
         torchSpeedMod = torchSpeedNormal;   // make sure that the torch's burning speed is at the normal speed to start
         torchesLit = 0;
         paused = false;
+        pauseMenu.SetActive(false);
     }
 
     void Update()
