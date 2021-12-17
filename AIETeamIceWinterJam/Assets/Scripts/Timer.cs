@@ -83,10 +83,13 @@ public class Timer : MonoBehaviour
                 sceneLoader.GameWon();
                 PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
                 sceneLoader.ChangeScene("JosieMenu");
+                // TODO open door
             }
             else
             {
-                sceneLoader.ChangeScenebyIndex(sceneLoader.Randomizer())
+                currentRoom++;
+                PlayerPrefs.SetInt("CurrentRoom", currentRoom);
+                sceneLoader.Randomizer();
             }
         }
     }
