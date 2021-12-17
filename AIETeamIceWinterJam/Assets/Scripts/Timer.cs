@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour
 
     [Header ("Connect To Objects In Unity Scene")]
     public PlayerMotor playerMotor;     // connects this script to the player in the scene
-    public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
+    // public Slider torchRemainingSlider; // slider to show the current status of the torch (time remaining without numbers)
     // public TMP_Text torchTimeRemaining; // timer to show the current status of the torch (time remaining with numbers)
     // public TMP_Text timeInGame;
     public GameObject pauseMenu;
@@ -61,7 +61,7 @@ public class Timer : MonoBehaviour
             torchSpeedMod = torchSpeedNormal;   // if the player is not sprinting, change the torch bruning speed back to nromal
         }
         torchTimer -= Time.deltaTime * torchSpeedMod;
-        torchRemainingSlider.value = torchTimer;    // displays the time left for the torch on a slider
+        // torchRemainingSlider.value = torchTimer;    // displays the time left for the torch on a slider
         // torchTimeRemaining.text = Mathf.Floor(torchTimer).ToString();    // displays the time left for the torch with numbers
 
         // TODO if player lights another torch, add time to the torchTimer and to a counter to check how many have been lit
