@@ -30,6 +30,7 @@ public class Timer : MonoBehaviour
     public GameObject pauseMenu;
     bool paused;
     public SceneLoader sceneLoader;
+    [SerializeField] PlayerController playerInput;
 
     void Start()
     {
@@ -88,7 +89,7 @@ public class Timer : MonoBehaviour
         {
             torchTimer = torchTimerMax;
         }
-
+        playerInput.animController.SetBool("Lighting", false);
         // TODO add change to sprite if needed
     }
 
