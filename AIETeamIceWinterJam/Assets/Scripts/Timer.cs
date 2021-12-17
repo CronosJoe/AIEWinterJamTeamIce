@@ -8,12 +8,13 @@ public class Timer : MonoBehaviour
 {
     [Header ("Leave These Alone")]
     [SerializeField]
-    public float worldTimer;        // how much time has passed sicne the start of the game
+    static public float worldTimer;        // how much time has passed sicne the start of the game
     [SerializeField]
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
     float lastTime;                 // how long it took you the last time that you played
+    public int currentRoom;
 
     [Header("You Can Change These")]
     public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
@@ -40,6 +41,8 @@ public class Timer : MonoBehaviour
         torchesLit = 0;
         paused = false;
         pauseMenu.SetActive(false);
+        currentRoom = PlayerPrefs.GetInt("CurrentRoom");
+        Debug.Log(currentRoom);
     }
 
     void Update()
@@ -75,9 +78,16 @@ public class Timer : MonoBehaviour
 
         if(torchesLit == torchesToLightTotal)
         {
-            sceneLoader.GameWon();
-            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
-            sceneLoader.ChangeScene("JosieMenu");
+            if(PlayerPrefs.GetInt("CurrentRoom") == 3)
+            {
+                sceneLoader.GameWon();
+                PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+                sceneLoader.ChangeScene("JosieMenu");
+            }
+            else
+            {
+                sceneLoader.ChangeScenebyIndex(sceneLoader.Randomizer())
+            }
         }
     }
 
