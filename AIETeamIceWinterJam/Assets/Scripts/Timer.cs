@@ -33,6 +33,7 @@ public class Timer : MonoBehaviour
     bool paused;
     public SceneLoader sceneLoader;
     [SerializeField] PlayerController playerInput;
+    public Collider door;
 
     void Start()
     {
@@ -78,8 +79,8 @@ public class Timer : MonoBehaviour
         if(torchesLit == torchesToLightTotal)
         {
             doorOpen = true;
+            door.isTrigger = true;
             // TODO open door
-            Debug.Log("Door Opens");
         }
     }
 

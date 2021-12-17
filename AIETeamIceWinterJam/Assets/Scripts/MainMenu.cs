@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour
 
     public SceneLoader sceneLoader;
     public TMP_Text winScore;
+    public TMP_Text lastTimeText;
 
     void Start()
     {
