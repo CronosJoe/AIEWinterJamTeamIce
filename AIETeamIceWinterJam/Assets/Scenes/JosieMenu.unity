@@ -2275,6 +2275,7 @@ MonoBehaviour:
   credits: {fileID: 927519584}
   win: {fileID: 2004600271}
   lose: {fileID: 376881760}
+  sceneLoader: {fileID: 793943653}
 --- !u!114 &793943653
 MonoBehaviour:
   m_ObjectHideFlags: 0
