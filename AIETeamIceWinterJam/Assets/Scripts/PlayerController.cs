@@ -93,6 +93,10 @@ public class PlayerController : MonoBehaviour
         }
         if(other.tag == "door") 
         {
+            if (timerScript.doorOpen)
+            {
+                timerScript.Win();
+            }
             //check torches here
             //win
         }

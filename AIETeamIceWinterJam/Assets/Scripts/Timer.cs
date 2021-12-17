@@ -13,8 +13,8 @@ public class Timer : MonoBehaviour
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
-    float lastTime;                 // how long it took you the last time that you played
-    public int currentRoom;
+    public string lastTime;                 // how long it took you the last time that you played
+    public bool doorOpen;
 
     [Header("You Can Change These")]
     public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
@@ -33,6 +33,7 @@ public class Timer : MonoBehaviour
     bool paused;
     public SceneLoader sceneLoader;
     [SerializeField] PlayerController playerInput;
+    public Collider door;
 
     void Start()
     {
@@ -41,8 +42,7 @@ public class Timer : MonoBehaviour
         torchesLit = 0;
         paused = false;
         pauseMenu.SetActive(false);
-        currentRoom = PlayerPrefs.GetInt("CurrentRoom");
-        Debug.Log(currentRoom);
+        doorOpen = false;
     }
 
     void Update()
@@ -78,20 +78,9 @@ public class Timer : MonoBehaviour
 
         if(torchesLit == torchesToLightTotal)
         {
-            if(PlayerPrefs.GetInt("CurrentRoom") == 3)
-            {
-                sceneLoader.GameWon();
-                PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
-                sceneLoader.ChangeScene("JosieMenu");
-                // TODO open door
-                Debug.Log("Door Opens");
-            }
-            else
-            {
-                currentRoom++;
-                PlayerPrefs.SetInt("CurrentRoom", currentRoom);
-                sceneLoader.Randomizer();
-            }
+            doorOpen = true;
+            door.isTrigger = true;
+            // TODO open door
         }
     }
 
@@ -121,5 +110,22 @@ public class Timer : MonoBehaviour
             Time.timeScale = 0;
             pauseMenu.SetActive(true);
         }
+    }
+
+    public void Win()
+    {
+        sceneLoader.GameWon();
+        if (lastTime != null)
+        {
+            lastTime = "Last time, you won in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
+            PlayerPrefs.SetString("LastTime", lastTime);
+        }
+        else
+        {
+            lastTime = "Not bad for your first game!";
+            PlayerPrefs.SetString("LastTime", lastTime);
+        }
+        PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+        sceneLoader.ChangeScene("JosieMenu");
     }
 }
