@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [Header("Outside references")]
     [SerializeField] PlayerMotor motor;
     [SerializeField] Animator animController;
+    [SerializeField] Timer timerScript; //don't change jut reference
     private Vector2 moveVec;
     private void OnEnable() //this will enable all of our input events when the object is enabled in the scene
     {
@@ -34,13 +35,12 @@ public class PlayerController : MonoBehaviour
     } 
     private void PauseButton(InputAction.CallbackContext obj)
     {
-        throw new NotImplementedException();
+        timerScript.TogglePause(); //toggle the pause menu
     }
-
     private void LightTorch(InputAction.CallbackContext obj) //this will run a check to detect a nearby torch then light it
     {
         animController.SetBool("Lighting", true);
-        //implent detect here
+        //implement detect here
         //call that torches lit method
         throw new NotImplementedException();
     }
