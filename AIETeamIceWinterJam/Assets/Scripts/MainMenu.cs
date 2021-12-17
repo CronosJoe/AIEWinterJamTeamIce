@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour
 
     public SceneLoader sceneLoader;
     public TMP_Text winScore;
+    public TMP_Text lastTimeText;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class MainMenu : MonoBehaviour
             label.text = winLabel;
             main.SetActive(false);
             winScore.text = "You won the game in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
+            lastTimeText.text = PlayerPrefs.GetString("LastTime");
         }
         else
         {
