@@ -193,6 +193,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 797208470867046376, guid: 31a37bd9115a9e64aa6bd248eda1a04c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8918833021632932386}
+    - target: {fileID: 797208470867046376, guid: 31a37bd9115a9e64aa6bd248eda1a04c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePause
+      objectReference: {fileID: 0}
+    - target: {fileID: 797208470867046376, guid: 31a37bd9115a9e64aa6bd248eda1a04c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Timer, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31a37bd9115a9e64aa6bd248eda1a04c, type: 3}
 --- !u!1 &8130773590186323796 stripped

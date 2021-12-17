@@ -84,6 +84,7 @@ public class Timer : MonoBehaviour
                 PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
                 sceneLoader.ChangeScene("JosieMenu");
                 // TODO open door
+                Debug.Log("Door Opens");
             }
             else
             {
