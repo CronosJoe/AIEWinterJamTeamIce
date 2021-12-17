@@ -31,6 +31,8 @@ public class MainMenu : MonoBehaviour
         main.SetActive(true);
         tutorial.SetActive(false);
         credits.SetActive(false);
+        //win.SetActive(false);
+        //lose.SetActive(false);
     }
 
     public void ToTutorial()
