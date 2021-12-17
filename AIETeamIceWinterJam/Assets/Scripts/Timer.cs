@@ -13,8 +13,8 @@ public class Timer : MonoBehaviour
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
-    float lastTime;                 // how long it took you the last time that you played
-    public int currentRoom;
+    string lastTime;                 // how long it took you the last time that you played
+    public bool doorOpen;
 
     [Header("You Can Change These")]
     public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
@@ -41,8 +41,7 @@ public class Timer : MonoBehaviour
         torchesLit = 0;
         paused = false;
         pauseMenu.SetActive(false);
-        currentRoom = PlayerPrefs.GetInt("CurrentRoom");
-        Debug.Log(currentRoom);
+        doorOpen = false;
     }
 
     void Update()
@@ -78,20 +77,21 @@ public class Timer : MonoBehaviour
 
         if(torchesLit == torchesToLightTotal)
         {
-            if(PlayerPrefs.GetInt("CurrentRoom") == 3)
+            doorOpen = true;
+            // TODO open door
+            Debug.Log("Door Opens");
+
+            sceneLoader.GameWon();
+            if(lastTime != null)
             {
-                sceneLoader.GameWon();
-                PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
-                sceneLoader.ChangeScene("JosieMenu");
-                // TODO open door
-                Debug.Log("Door Opens");
+                lastTime = PlayerPrefs.GetString("WorldTime");
             }
             else
             {
-                currentRoom++;
-                PlayerPrefs.SetInt("CurrentRoom", currentRoom);
-                sceneLoader.Randomizer();
+                lastTime = "Not bad for your first game!";
             }
+            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+            sceneLoader.ChangeScene("JosieMenu");
         }
     }
 
