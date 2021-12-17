@@ -428,7 +428,7 @@ MonoBehaviour:
   worldTimer: 0
   torchTimer: 0
   torchesLit: 0
-  torchTimerMax: 10
+  torchTimerMax: 50
   torchSpeedNormal: 1
   torchSpeedSprint: 1.5
   relightAmount: 20
@@ -563,12 +563,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889121629}
   m_CullTransparentMesh: 1
+--- !u!1 &914051013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5885767184105925623, guid: 964c64d9993423a4d962d58c62189130, type: 3}
+  m_PrefabInstance: {fileID: 5885767183988635912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &914051016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5885767184105925132, guid: 964c64d9993423a4d962d58c62189130, type: 3}
   m_PrefabInstance: {fileID: 5885767183988635912}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 914051013}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51db35444dfe5c341b92c993389ef25f, type: 3}
@@ -579,7 +584,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5885767184105925130, guid: 964c64d9993423a4d962d58c62189130, type: 3}
   m_PrefabInstance: {fileID: 5885767183988635912}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 914051013}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ba80a4234ac3d14f88520cfeed2bca6, type: 3}
@@ -928,6 +933,7 @@ GameObject:
   - component: {fileID: 1777585635}
   - component: {fileID: 1777585634}
   - component: {fileID: 1777585633}
+  - component: {fileID: 1777585636}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -993,13 +999,31 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777585632}
-  m_LocalRotation: {x: 0.11856375, y: -0, z: -0, w: 0.99294645}
-  m_LocalPosition: {x: 0.92, y: 1.95, z: -10.69}
+  m_LocalRotation: {x: 0.18305561, y: -0, z: -0, w: 0.98310256}
+  m_LocalPosition: {x: 2.73, y: 3.83, z: -10.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 13.618, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.096, y: 0, z: 0}
+--- !u!114 &1777585636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777585632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8e4ce97aefd4d4f9d86e6f185b64fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 914051013}
+  cameraOffsetDistance: {x: 0, y: 0, z: 0}
+  smoothFaction: 0.5
+  lookAtTarget: 0
+  shouldRotate: 1
+  rotationSpeed: 1
 --- !u!1 &1906178842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1212,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 808835941}
     - target: {fileID: 5885767184105925130, guid: 964c64d9993423a4d962d58c62189130, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1777585636}
+    - target: {fileID: 5885767184105925130, guid: 964c64d9993423a4d962d58c62189130, type: 3}
       propertyPath: torchLightDistance
       value: 3
       objectReference: {fileID: 0}
@@ -1212,6 +1240,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8114323184385188433, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8114323184599040362, guid: 723baafbc928cc54a994ad4eb4e607de, type: 3}
       propertyPath: flame
       value: 
