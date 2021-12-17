@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     private float torchTimer;       // how much time is left before the torch goes out
     [SerializeField]
     int torchesLit;                 // how many torches have been lit so far
+    float lastTime;                 // how long it took you the last time that you played
 
     [Header("You Can Change These")]
     public float torchTimerMax;     // the max amount of time on your torch, also the amount the torch starts with
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
     public GameObject pauseMenu;
     bool paused;
     public SceneLoader sceneLoader;
+    [SerializeField] PlayerController playerInput;
 
     void Start()
     {
@@ -66,9 +68,8 @@ public class Timer : MonoBehaviour
 
         if(torchTimer <= 0)
         {
-            Debug.Log("You Lose");
             sceneLoader.GameLose();
-            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+            // PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
             sceneLoader.ChangeScene("JosieMenu");
         }
 
@@ -88,7 +89,7 @@ public class Timer : MonoBehaviour
         {
             torchTimer = torchTimerMax;
         }
-
+        playerInput.animController.SetBool("Lighting", false);
         // TODO add change to sprite if needed
     }
 

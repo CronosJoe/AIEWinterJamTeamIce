@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
     public GameObject lose;
 
     public SceneLoader sceneLoader;
+    public TMP_Text winScore;
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class MainMenu : MonoBehaviour
             win.SetActive(true);
             label.text = winLabel;
             main.SetActive(false);
+            winScore.text = "You won the game in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
         }
         else
         {

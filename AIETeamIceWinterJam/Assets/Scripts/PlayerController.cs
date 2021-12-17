@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playersInputTracker;
     [Header("Outside references")]
     [SerializeField] PlayerMotor motor;
-    [SerializeField] Animator animController;
+    public Animator animController;
     [SerializeField] Timer timerScript; //don't change jut reference
+    [Header("editable")]
+    [SerializeField] int torchLightDistance;
+    [Range(0,1)]
+    [SerializeField] float delay;
     private Vector2 moveVec;
+    private GameObject closestTorch = null; //this will be used to store
     private void OnEnable() //this will enable all of our input events when the object is enabled in the scene
     {
         playersInputTracker.currentActionMap["Sprint"].performed += ToSprint;
@@ -39,15 +44,46 @@ public class PlayerController : MonoBehaviour
     }
     private void LightTorch(InputAction.CallbackContext obj) //this will run a check to detect a nearby torch then light it
     {
-        animController.SetBool("Lighting", true);
-        //implement detect here
-        //call that torches lit method
-        throw new NotImplementedException();
+        if (closestTorch != null)
+        {
+            if ((closestTorch.transform.position - transform.position).magnitude <= torchLightDistance && !closestTorch.GetComponent<MazeTorch>().lit)
+            {
+                animController.SetBool("Lighting", true);
+                closestTorch.GetComponent<MazeTorch>().LightTorch();
+
+                // start the coroutine
+                StartCoroutine(RelightTorch(delay));
+            }
+        }
     }
-    private void ToSprint(InputAction.CallbackContext obj) 
+    private void ToSprint(InputAction.CallbackContext obj)
     {
         animController.SetBool("Running", !animController.GetBool("Running"));
         motor.DashInput();
+    }
+
+    // coroutine delayed for X seconds
+    private IEnumerator RelightTorch(float delay)
+    {
+        // after x seconds 
+        yield return new WaitForSeconds(delay);
+
+        // we do the thing
+        timerScript.LightTorch();
+    }
+    
+
+    private void OnTriggerEnter(Collider other) //this is going to be used for the grabbing the torch when they enter the range
+    {
+        if (other.tag == "torch") 
+        {
+            if (!other.GetComponent<MazeTorch>().lit)
+            {
+                Debug.Log("Got new torch");
+                closestTorch = other.gameObject;
+            }
+            //might want to display to play that they can in fact now do the thing
+        }
     }
     // Update is called once per frame
     void Update()
