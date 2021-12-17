@@ -35,6 +35,7 @@ public class MainMenu : MonoBehaviour
         label.text = mainLabel;
         main.SetActive(true);
         tutorial.SetActive(false);
+        mainLabelImg.SetActive(true);
 
         if (sceneLoader.CheckGameWon())
         {
