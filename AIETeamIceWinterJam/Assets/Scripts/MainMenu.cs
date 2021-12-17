@@ -25,12 +25,35 @@ public class MainMenu : MonoBehaviour
     public GameObject win;
     public GameObject lose;
 
+    public SceneLoader sceneLoader;
+
     void Start()
     {
         label.text = mainLabel;
         main.SetActive(true);
         tutorial.SetActive(false);
-        credits.SetActive(false);
+
+        if (sceneLoader.CheckGameWon())
+        {
+            win.SetActive(true);
+            label.text = winLabel;
+            main.SetActive(false);
+        }
+        else
+        {
+            win.SetActive(false);
+        }
+
+        if (sceneLoader.CheckGameLost())
+        {
+            lose.SetActive(true);
+            label.text = loseLabel;
+            main.SetActive(false);
+        }
+        else
+        {
+            lose.SetActive(false);
+        }
     }
 
     public void ToTutorial()

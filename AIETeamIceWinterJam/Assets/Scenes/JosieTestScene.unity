@@ -167,6 +167,7 @@ MonoBehaviour:
   playerMotor: {fileID: 1043568926}
   torchRemainingSlider: {fileID: 1823278153}
   pauseMenu: {fileID: 1998566179}
+  sceneLoader: {fileID: 5790340}
 --- !u!114 &5790336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,20 +262,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5790334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab20f07a7b7c38f4d8565fa178f8820a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d73711c39e67e44e8492ddce0b460c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  tutorialButton: {fileID: 0}
-  creditsButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  label: {fileID: 0}
-  mainLabel: 
-  tutorialLabel: 
-  creditsLabel: 
-  main: {fileID: 0}
-  tutorial: {fileID: 0}
-  credits: {fileID: 0}
 --- !u!1 &353545775
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +814,7 @@ MonoBehaviour:
   playersInputTracker: {fileID: 1043568927}
   motor: {fileID: 1043568926}
   animController: {fileID: 1043568929}
+  timerScript: {fileID: 0}
 --- !u!4 &1043568925
 Transform:
   m_ObjectHideFlags: 0

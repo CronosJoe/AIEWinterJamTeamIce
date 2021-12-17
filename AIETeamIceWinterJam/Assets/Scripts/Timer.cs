@@ -29,6 +29,7 @@ public class Timer : MonoBehaviour
     // public TMP_Text timeInGame;
     public GameObject pauseMenu;
     bool paused;
+    public SceneLoader sceneLoader;
 
     void Start()
     {
@@ -65,15 +66,17 @@ public class Timer : MonoBehaviour
 
         if(torchTimer <= 0)
         {
-            // TODO adjust later, either add pop-up or a scene
             Debug.Log("You Lose");
+            sceneLoader.GameLose();
+            PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+            sceneLoader.ChangeScene("JosieMenu");
         }
 
         if(torchesLit == torchesToLightTotal)
         {
-            // TODO adjust later, either add pop-up or a scene
-            Debug.Log("You Win");
+            sceneLoader.GameWon();
             PlayerPrefs.SetString("WorldTime", worldTimer.ToString("00.00"));
+            sceneLoader.ChangeScene("JosieMenu");
         }
     }
 
