@@ -4897,8 +4897,8 @@ MonoBehaviour:
   animController: {fileID: 6710000145274444527}
   timerScript: {fileID: 0}
   cameraController: {fileID: 0}
-  torchLightDistance: 0
-  delay: 0
+  torchLightDistance: 4
+  delay: 0.2
 --- !u!114 &5885767184105925132
 MonoBehaviour:
   m_ObjectHideFlags: 0

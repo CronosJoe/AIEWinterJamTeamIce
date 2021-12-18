@@ -4840,7 +4840,7 @@ Transform:
   m_GameObject: {fileID: 8114323184599040365}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 5531575787183096787}
   - {fileID: 1167724903614214061}
@@ -4860,8 +4860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b8c0f2ba84c5f4aa266e18bfca7f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torchBody: {fileID: 0}
-  flame: {fileID: 0}
+  torchBody: {fileID: 1981380634462729495}
+  flame: {fileID: 5698483000322112003}
   lit: 0
 --- !u!65 &8114323184599040360
 BoxCollider:
@@ -4874,7 +4874,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9071538591767105807
 GameObject:
@@ -4958,13 +4958,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1, z: 0, w: 2.4824054}
+  m_BoundingSphereOverride: {x: 0, y: 3.6e-44, z: 6.76e-42, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5038,6 +5038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28e63eab2f5e8904ba94e7560e4ce03c, type: 3}
+--- !u!1 &1981380634462729495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 28e63eab2f5e8904ba94e7560e4ce03c, type: 3}
+  m_PrefabInstance: {fileID: 1710856454865422406}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1167724903614214061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28e63eab2f5e8904ba94e7560e4ce03c, type: 3}
