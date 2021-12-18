@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
             main.SetActive(false);
             winScore.text = "You won the game in " + PlayerPrefs.GetString("WorldTime") + " seconds.";
             lastTimeText.text = PlayerPrefs.GetString("LastTime");
+            mainLabelImg.SetActive(false);
         }
         else
         {
@@ -62,6 +63,7 @@ public class MainMenu : MonoBehaviour
             lose.SetActive(true);
             label.text = loseLabel;
             main.SetActive(false);
+            mainLabelImg.SetActive(false);
         }
         else
         {
@@ -100,8 +102,15 @@ public class MainMenu : MonoBehaviour
         main.SetActive(true);
         tutorial.SetActive(false);
         credits.SetActive(false);
+        win.SetActive(false);
+        lose.SetActive(false);
         mainLabelImg.SetActive(true);
     }
+
+    public void ToGame()
+    {
+        mainLabelImg.SetActive(false);
+}
 
     // TODO* implement are you sure?
 
