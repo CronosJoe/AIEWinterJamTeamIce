@@ -6,6 +6,11 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    public float lightRange;
+    public float lightRangeMax;
+    public Light light;
+    public float lightSpeed;
+
     [Header("Buttons")]
     public Button playButton;
     public Button tutorialButton;
@@ -32,6 +37,8 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        light.range = 0;
+        lightRange = 0;
         label.text = mainLabel;
         main.SetActive(true);
         tutorial.SetActive(false);
@@ -62,17 +69,29 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        lightRange += Time.deltaTime * lightSpeed;
+        if(lightRange > lightRangeMax)
+        {
+            lightRange = lightRangeMax;
+        }
+        light.range = lightRange;
+    }
+
     public void ToTutorial()
     {
         label.text = tutorialLabel;
         main.SetActive(false);
         tutorial.SetActive(true);
+        mainLabelImg.SetActive(false);
     }
     public void ToCredits()
     {
         label.text = creditsLabel;
         main.SetActive(false);
         credits.SetActive(true);
+        mainLabelImg.SetActive(false);
     }
 
     public void BackToMenu()
@@ -81,6 +100,7 @@ public class MainMenu : MonoBehaviour
         main.SetActive(true);
         tutorial.SetActive(false);
         credits.SetActive(false);
+        mainLabelImg.SetActive(true);
     }
 
     // TODO* implement are you sure?
