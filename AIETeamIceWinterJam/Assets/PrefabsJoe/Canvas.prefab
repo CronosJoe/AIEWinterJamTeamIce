@@ -128,16 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torchTimer: 0
   torchesLit: 0
-  currentRoom: 0
+  lastTime: 
+  doorOpen: 0
   torchTimerMax: 30
   torchSpeedNormal: 1
   torchSpeedSprint: 1.75
   relightAmount: 10
-  torchesToLightTotal: 5
+  torchesToLightTotal: 3
   playerMotor: {fileID: 0}
   pauseMenu: {fileID: 8130773590186323796}
   sceneLoader: {fileID: 8918833021632932397}
   playerInput: {fileID: 0}
+  door: {fileID: 0}
 --- !u!1001 &8918833022859506031
 PrefabInstance:
   m_ObjectHideFlags: 0
